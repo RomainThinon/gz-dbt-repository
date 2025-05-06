@@ -4,7 +4,7 @@ WITH source AS (
 
 renamed AS (
     SELECT
-        products_id,
+        products_id as product_id
         cast(purchse_price as FLOAT64) AS purchase_price
     FROM source
 )
