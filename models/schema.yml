@@ -1,8 +1,8 @@
-version: 2 
+version: 2
 
-sources: 
-  - name: gz_raw_data AS raw
-    tables: 
-      - name: raw_gz_sales AS sales
-      - name: raw_gz_product AS product
-      - name: raw_gz_ship AS ship
+sources:
+  - name: gz_raw_data  # This is your source name, e.g., the schema in your database
+    tables:
+      - name: raw_gz_sales
+      - name: raw_gz_product
+      - name: raw_gz_ship
