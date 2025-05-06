@@ -4,5 +4,45 @@ sources:
   - name: gz_raw_data  # This is your source name, e.g., the schema in your database
     tables:
       - name: raw_gz_sales
+        identifier: raw_gz_sales
+        description: sales of Greenweez / we have on row per product_id found in each orders_id
+        loaded_at_field: "CAST(date_date AS TIMESTAMP)"
+        freshness:
+          warn_after: {count: 90, period: day }
+        columns: 
+        - name: date_date
+          description: la date quoi 
+        - name: orders_id 
+          description: l'id de l'order 
+        - name: products_id
+          description: l'id du product 
+        - name: revenue 
+          description: les revenues 
+        - name: quantity
+          description: la quantity
+    
       - name: raw_gz_product
+        identifier: raw_gz_product  
+
+        columns: 
+        - name: products_id
+          description: id du product 
+          tests: 
+            - unique 
+            - not_null
+        - name: purchase_price 
+          description: prix d'achat 
       - name: raw_gz_ship
+        identifier: raw_gz_ship
+        columns: 
+        -  name: orders_id 
+           description: id de l'order 
+           tests: 
+             - unique 
+             - not_null
+        -  name: shipping_fee
+           description: frais d'envoie
+        -  name: logcost
+           description: frais de log 
+        -  name: ship_cost
+           description: le coût d'envoies 
